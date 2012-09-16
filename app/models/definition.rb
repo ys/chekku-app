@@ -1,7 +1,10 @@
 class Definition < ActiveRecord::Base
-  attr_accessible :executable, :name
 
-  validates :executable, :name, presence: true
+  belongs_to :user, inverse_of: :definitions
+
+  attr_accessible :executable, :name, :user
+
+  validates :executable, :name, :user, :user_id, presence: true
 
   def valid=(value)
     if value

@@ -7,5 +7,8 @@ class CreateDefinitions < ActiveRecord::Migration
       t.timestamps
     end
     add_index :definitions, :name, unique: true
+    execute "
+      create index on definitions using gin(to_tsvector('english', name));
+      create index on definitions using gin(to_tsvector('english', executable));"
   end
 end

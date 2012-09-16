@@ -1,11 +1,13 @@
 ChekkuApp::Application.routes.draw do
-  devise_for :users
 
-  ActiveAdmin.routes(self)
+  match "/auth/github/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :definitions, only: [:index, :new, :create, :show]
 
-  root to: "definitions#new"
+  root to: "definitions#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

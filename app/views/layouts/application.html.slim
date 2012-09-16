@@ -29,8 +29,13 @@ head
 body
   .container.top-bar.home-border
     .attached
-      .name
-        span Chekku
-  .row
-    .twelve.columns
-      = yield
+      header.name
+        h1
+          = link_to 'Chekku', root_path
+      .utilities
+        = link_to 'New Definition', new_definition_path, class: 'button'
+  .container
+    .row
+      = display_flash_messages
+  .container
+    = yield
