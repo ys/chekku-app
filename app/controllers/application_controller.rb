@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def authenticate_user!
-    unless current_user
+    unless current_user.has_access?
       redirect_to new_session_path()
     end
   end
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    else
+      @current_user ||= Guest.new
+    end
   end
 end

@@ -27,15 +27,24 @@ head
   = csrf_meta_tag
 
 body
-  .container.top-bar.home-border
-    .attached
-      header.name
+  nav.top-bar
+    ul
+      li.name
         h1
           = link_to 'Chekku', root_path
-      .utilities
-        = link_to 'New Definition', new_definition_path, class: 'button'
-  .container
-    .row
+      section.utilities
+        ul.left
+          li
+            = link_to new_definition_path do
+              i.icon-plus
+              | New Definition
+          li
+            = link_to 'about', '#', 'data-reveal-id' => 'aboutModal'
+      ul.user.right
+        li
+          = render 'layouts/user'
+  .container data-pjax-container=true
+    .flash-messages
       = display_flash_messages
-  .container
     = yield
+  = render 'layouts/about'

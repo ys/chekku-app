@@ -5,6 +5,7 @@ class Definition < ActiveRecord::Base
   attr_accessible :executable, :name, :user
 
   validates :executable, :name, :user, :user_id, presence: true
+  validates :name, uniqueness: true
 
   def valid=(value)
     if value

@@ -1,13 +1,21 @@
 class DefinitionsController < ApplicationController
 
   respond_to :html, :json
+  respond_to :yaml, only: [:index, :show]
 
   helper_method :definition
   helper_method :definitions
 
-  skip_before_filter :authenticate_user!, only: :index
+  skip_before_filter :authenticate_user!, only: [:index, :export]
 
   def index
+  end
+
+  def export
+    respond_to do |with|
+      with.html
+      with.yaml { render text: definitions.map{ |definition| YamlDefinition.new(definition).output }.to_yaml }
+    end
   end
 
   def new
@@ -16,7 +24,7 @@ class DefinitionsController < ApplicationController
   def create
     definition.user = current_user
     definition.save
-    respond_with definition
+    respond_with definition, redirect_url: definitions_path
   end
 
   def show
@@ -29,7 +37,17 @@ class DefinitionsController < ApplicationController
   end
 
   def definitions
-    @definitions ||= params[:q] ? Definition.search(params[:q]) : Definition.all
+    @definitions ||= query ? Definition.search(query) : Definition.all
+  end
+
+  def query
+    if params[:q]
+      params[:q].gsub('OR', '|')
+    elsif params[:definitions]
+      params[:definitions].join(' | ')
+    else
+      nil
+    end
   end
 
   def definition_params

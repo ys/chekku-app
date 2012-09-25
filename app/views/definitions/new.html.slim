@@ -1,4 +1,5 @@
-= simple_form_for definition do |f|
-  = f.input :name
-  = f.input :executable
-  = f.button :submit
+.definition-form
+  = simple_form_for definition do |f|
+    = f.input :name, input_html: { class: 'large' }
+    = f.input :executable, input_html: { class: 'large' }
+    = f.button :submit

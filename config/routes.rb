@@ -5,7 +5,9 @@ ChekkuApp::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :definitions, only: [:index, :new, :create, :show]
+  resources :definitions, only: [:index, :new, :create, :show] do
+    post :export, on: :collection
+  end
 
   root to: "definitions#index"
 

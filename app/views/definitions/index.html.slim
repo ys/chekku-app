@@ -1,8 +1,8 @@
-.row
-  .twelve.columns
-    = form_tag definitions_path, method: :get do
+.container
+  .search-form
+    = form_tag definitions_path, method: :get, id: 'search-form' do
       = text_field_tag :q, '',  class: 'large input'
       = link_to '#', class: 'search' do
         i.icon-search
-.row
+.container.definitions
   = render definitions
