@@ -213,6 +213,9 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    strong_parameters (0.1.3)
+      actionpack (>= 3.2.0)
+      activemodel (>= 3.2.0)
     temple (0.4.1)
     texticle (2.0.3)
       activerecord (~> 3.0)
@@ -258,6 +261,7 @@ DEPENDENCIES
   select2-rails
   simple_form
   slim
+  strong_parameters
   texticle
   uglifier (>= 1.0.3)
   zurb-foundation (~> 3.0.9)

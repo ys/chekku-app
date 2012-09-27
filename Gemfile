@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'strong_parameters'
 
 gem 'omniauth-github'
 

@@ -8,7 +8,7 @@ class DefinitionsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:index, :export]
 
-  before_filter :set_tags, only: [:new, :create]
+  before_filter :set_tags, only: [:new, :create, :edit, :update]
 
   def index
   end
@@ -16,7 +16,7 @@ class DefinitionsController < ApplicationController
   def export
     respond_to do |with|
       with.html
-      with.yaml { render text: definitions.map{ |definition| YamlDefinition.new(definition).output }.to_yaml }
+      with.yaml { render text: definitions.safe.map{ |definition| YamlDefinition.new(definition).output }.to_yaml }
     end
   end
 
@@ -26,16 +26,30 @@ class DefinitionsController < ApplicationController
   def create
     definition.user = current_user
     definition.save
-    respond_with definition, redirect_url: definitions_path
+    respond_with definition, location: definitions_path
   end
 
   def show
   end
 
+  def edit
+  end
+
+  def update
+    definition.update_attributes(definition_params)
+    respond_with definition
+  end
+
   private
 
   def definition
-    @definition ||= params[:id] ? Definition.find(params[:id]) : Definition.new(definition_params)
+    @definition ||= if params[:id]
+      Definition.find(params[:id])
+      elsif params[:definition]
+        Definition.new(definition_params)
+      else
+        Definition.new
+      end
   end
 
   def definitions
@@ -53,7 +67,11 @@ class DefinitionsController < ApplicationController
   end
 
   def definition_params
-    params[:definition]
+    if current_user.admin?
+      params.require(:definition).permit(:executable, :name, :tags_list, :dangerous)
+    else
+      params.require(:definition).permit(:executable, :name, :tags_list)
+    end
   end
 
   def set_tags

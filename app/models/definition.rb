@@ -1,11 +1,14 @@
 class Definition < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
 
   belongs_to :user, inverse_of: :definitions
 
-  attr_accessible :executable, :name, :user, :tags_list
+  attr_accessible :executable, :name, :user, :tags_list, :dangerous
 
   validates :executable, :name, :user, :user_id, presence: true
   validates :name, uniqueness: true
+
+  scope :safe, -> { where(dangerous: false) }
 
   def valid=(value)
     if value

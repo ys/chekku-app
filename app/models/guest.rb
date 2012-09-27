@@ -11,6 +11,10 @@ class Guest
     'guest.png'
   end
 
+  def admin?
+    false
+  end
+
   def name
     'Sign in with Github'
   end

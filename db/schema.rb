@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927190525) do
+ActiveRecord::Schema.define(:version => 20120927202406) do
 
   create_table "definitions", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "executable", :null => false
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "tags",                       :array => true
+    t.string   "name",                         :null => false
+    t.string   "executable",                   :null => false
+    t.integer  "user_id",                      :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "tags",                                         :array => true
+    t.boolean  "dangerous",  :default => true
   end
 
   add_index "definitions", ["name"], :name => "index_definitions_on_name", :unique => true
@@ -36,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20120927190525) do
     t.string   "provider"
     t.string   "avatar_url"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "admin",      :default => false
   end
 
 end
