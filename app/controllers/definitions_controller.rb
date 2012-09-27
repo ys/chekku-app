@@ -8,6 +8,8 @@ class DefinitionsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:index, :export]
 
+  before_filter :set_tags, only: [:new, :create]
+
   def index
   end
 
@@ -52,5 +54,9 @@ class DefinitionsController < ApplicationController
 
   def definition_params
     params[:definition]
+  end
+
+  def set_tags
+    @tags = Tag.all
   end
 end

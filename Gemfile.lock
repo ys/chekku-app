@@ -141,9 +141,13 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.14.1)
+    pg_array_parser (0.0.8)
     pjax_rails (0.3.3)
       jquery-rails
     polyglot (0.3.3)
+    postgres_ext (0.0.7)
+      activerecord (~> 3.2.0)
+      pg_array_parser (~> 0.0.3)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -192,6 +196,8 @@ GEM
       tilt (~> 1.3)
     sassy-math (1.2)
       compass (~> 0.11)
+    select2-rails (3.1.1)
+      thor (~> 0.14)
     selenium-webdriver (2.25.0)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -245,9 +251,11 @@ DEPENDENCIES
   omniauth-github
   pg
   pjax_rails
+  postgres_ext
   rails (= 3.2.8)
   rspec-rails
   sass-rails (~> 3.2.3)
+  select2-rails
   simple_form
   slim
   texticle

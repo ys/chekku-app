@@ -1,5 +1,9 @@
+javascript:
+  window.availableTags = #{{@tags.map(&:name).to_json }}
 .definition-form
   = simple_form_for definition do |f|
     = f.input :name, input_html: { class: 'large' }
     = f.input :executable, input_html: { class: 'large' }
+    = f.input :tags_list, input_html: { class: 'large' }
+
     = f.button :submit

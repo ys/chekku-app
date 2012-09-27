@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require jquery.pjax
+//= require select2
 //= require_tree .
 

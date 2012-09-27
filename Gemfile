@@ -11,6 +11,7 @@ gem 'omniauth-github'
 gem 'slim'
 
 gem 'texticle', :require => 'texticle/rails'
+gem 'postgres_ext'
 
 gem 'pjax_rails'
 gem 'foundation_rails_helper'
@@ -23,6 +24,7 @@ group :assets do
   gem 'zurb-foundation', '~> 3.0.9'
   gem 'font-awesome-rails'
   gem 'neat'
+  gem 'select2-rails'
   gem 'bourbon'
 end
 
