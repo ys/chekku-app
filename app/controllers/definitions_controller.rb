@@ -71,6 +71,7 @@ class DefinitionsController < ApplicationController
       params.require(:definition).permit(:executable, :name, :tags_list, :dangerous)
     else
       params.require(:definition).permit(:executable, :name, :tags_list)
+      params[:definition][:dangerous] = true
     end
   end
 
