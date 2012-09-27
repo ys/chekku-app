@@ -8,6 +8,18 @@
     background: rgba(50,50,50,0.7)
     h1
       color: white
+      float: left
+    h3
+      float: right
+      font-size: 1em
+
+    &.dangerous
+      h3
+        color: $alertColor
+    &.safe
+      h3
+        color: $successColor
+
   p
     padding: 10px
     background: rgba(255,255,255, 0.5)

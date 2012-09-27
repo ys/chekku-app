@@ -1,6 +1,13 @@
 article.definition
-  header
-    h1= definition.name
+  header class="#{definition.dangerous? ? 'dangerous' : 'safe'}"
+    h1
+      = definition.name
+    h3
+      - if definition.dangerous?
+        i.icon-warning-sign
+      - else
+        i.icon-ok
+
   p
     i.icon-save
     span= definition.executable
