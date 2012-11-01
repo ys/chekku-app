@@ -19,6 +19,7 @@ class Guest
     'Sign in with Github'
   end
   alias :message :name
+  alias :username :name
 
   def link
     '/auth/github'

@@ -1,17 +1,24 @@
 article.definition
   header class="#{definition.dangerous? ? 'dangerous' : 'safe'}"
-    h1
-      = definition.name
     h3
       - if definition.dangerous?
         i.icon-warning-sign
       - else
         i.icon-ok
+    h1
+      -if current_user.admin?
+        = link_to definition.name, edit_definition_path(definition)
+      - else
+        = definition.name
+
 
   p
     i.icon-save
-    span= definition.executable
-    br
-    i.icon-tags
-    span= definition.tags_list
+    span.executable= definition.executable
+    - unless definition.tags.nil? || definition.tags.blank?
+      span.tags
+        i.icon-tags
+        - definition.tags.each do |tag|
+          = render 'tags/tag', tag: tag
+
 

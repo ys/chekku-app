@@ -1,26 +1,29 @@
+header.title
+  width: 400px
+  height: 100px
+  margin: 0 auto
+  margin-bottom: 50px
+  h1
+    font-size: 113px
+    a
+      color: #222
+      font-family: 'Fredoka One', cursive
 .top-bar
-  background: #111
-  height: 50px
-  margin-bottom: 20px
-  .name
-    float: left
-    height: 50px
-    margin-left: 20px
-    h1
-      margin: 0
-      padding: 0
-      height: 50px
-      a
-        display: block
-        height: 50px
-        margin: 0
-        padding: 0
-        color: white
-        font-size: 25px
-        line-height: 50px
-  .user
-    img
-      margin: 10px
-      float: left
-      height: 30px
+  @include border-bottom-left-radius(3px)
+  @include border-bottom-right-radius(3px)
 
+  position: fixed
+  top: 0
+  right: 20px
+  background: #222
+  ul
+    margin: 10px
+    margin-top: 5px
+    height: 20px
+    li
+      a
+        color: white
+      float: left
+      margin-right: 10px
+      margin-left: 10px
+      list-style-type: none

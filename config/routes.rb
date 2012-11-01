@@ -9,6 +9,8 @@ ChekkuApp::Application.routes.draw do
     post :export, on: :collection
   end
 
+  resources :tags, only: [:show]
+
   root to: "definitions#index"
 
   # The priority is based upon order of creation:

@@ -1,7 +1,16 @@
-#aboutModal.reveal-modal.small
+#aboutModal.reveal-modal.medium
   h2 About Chekku
   p.lead
-    | This is a gem on github
+    | The gem that checks your software dependencies
+  p.lead
+    ' You can post a list of definitions in the following json format:
+
+    .panel
+      |{"definitions":["mysql","redis"]}
+    br
+    ' to
+
+    = link_to '/definitions/export.yaml', export_definitions_path(format: :yaml)
   p
     = link_to 'github.com/ys/chekku', 'http://github.com/ys/chekku'
   a.close-reveal-modal &#215;

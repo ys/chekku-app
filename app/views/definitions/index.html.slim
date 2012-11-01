@@ -1,8 +1,15 @@
 .container
   .search-form
     = form_tag definitions_path, method: :get, id: 'search-form' do
-      = text_field_tag :q, '',  class: 'large input'
-      = link_to '#', class: 'search' do
-        i.icon-search
+      = text_field_tag :q, q,  class: 'large input'
+      .actions
+        = link_to '#', class: 'search' do
+          i.icon-search
+        - if q
+          = link_to export_definitions_path(format: :yaml), class: 'download', method: 'POST', 'data-skip-pjax' => true do
+            i.icon-download
+  .add-definition
+    = link_to new_definition_path do
+      i.icon-plus
 .container.definitions
   = render definitions

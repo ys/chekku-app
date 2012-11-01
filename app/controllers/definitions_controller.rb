@@ -1,12 +1,13 @@
 class DefinitionsController < ApplicationController
 
   respond_to :html, :json
-  respond_to :yaml, only: [:index, :show]
+  respond_to :yaml, only: [:index, :show, :export]
 
   helper_method :definition
   helper_method :definitions
+  helper_method :q
 
-  skip_before_filter :authenticate_user!, only: [:index, :export]
+  before_filter :authenticate_user!, except: [:index, :export]
 
   before_filter :set_tags, only: [:new, :create, :edit, :update]
 
@@ -53,12 +54,16 @@ class DefinitionsController < ApplicationController
   end
 
   def definitions
-    @definitions ||= query ? Definition.search(query) : Definition.all
+    @definitions ||= query ? Definition.search(query) : Definition.scoped
+  end
+
+  def q
+    params[:q]
   end
 
   def query
-    if params[:q]
-      params[:q].gsub('OR', '|')
+    if q.present?
+      q.gsub('OR', '|')
     elsif params[:definitions]
       params[:definitions].join(' | ')
     else

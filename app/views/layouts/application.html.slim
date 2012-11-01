@@ -28,24 +28,18 @@ head
   = csrf_meta_tag
 
 body
-  nav.top-bar
-    ul
-      li.name
-        h1
-          = link_to 'Chekku', root_path
-      section.utilities
-        ul.left
-          li
-            = link_to new_definition_path do
-              i.icon-plus
-              | New Definition
-          li
-            = link_to 'about', '#', 'data-reveal-id' => 'aboutModal'
-      ul.user.right
-        li
-          = render 'layouts/user'
+  header.title
+    h1
+      = link_to 'Chekku', root_path
+    nav.top-bar
+      ul
+        li= link_to 'about', '#', 'data-reveal-id' => 'aboutModal'
+        li= render 'layouts/user'
   .container data-pjax-container=true
     .flash-messages
       = display_flash_messages
     = yield
+  footer
+    'Made By
+    = link_to '@yann_ck', 'http://twitter.com/yann_ck'
   = render 'layouts/about'

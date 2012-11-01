@@ -9,6 +9,13 @@ class Definition < ActiveRecord::Base
   validates :name, uniqueness: true
 
   scope :safe, -> { where(dangerous: false) }
+  scope :with_tag, ->(tag){ where(self.has_tag(tag)) }
+
+  def self.has_tag(tag)
+    arel = self.arel_table
+    any_tags_function = Arel::Nodes::NamedFunction.new('ANY', [arel[:tags]])
+    predicate = Arel::Nodes::Equality.new(tag, any_tags_function)
+  end
 
   def valid=(value)
     if value
