@@ -10,8 +10,7 @@ ChekkuApp::Application.routes.draw do
   end
 
   resources :tags, only: [:show]
-
-  root to: "definitions#index"
+  root to: 'high_voltage/pages#show', id: 'home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

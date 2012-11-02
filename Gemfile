@@ -9,6 +9,7 @@ gem 'strong_parameters'
 
 gem 'omniauth-github'
 
+gem 'redcarpet'
 gem 'slim'
 
 gem 'texticle', :require => 'texticle/rails'
@@ -18,6 +19,7 @@ gem 'pjax_rails'
 gem 'foundation_rails_helper'
 
 gem 'draper'
+gem 'high_voltage'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
