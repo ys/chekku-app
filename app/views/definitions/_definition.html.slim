@@ -1,10 +1,5 @@
-article.definition
-  header class="#{definition.dangerous? ? 'dangerous' : 'safe'}"
-    h3
-      - if definition.dangerous?
-        i.icon-warning-sign
-      - else
-        i.icon-ok
+article.definition class="#{definition.dangerous? ? 'dangerous' : 'safe'}"
+  header
     h1
       -if current_user.admin?
         = link_to definition.name, edit_definition_path(definition)
@@ -20,5 +15,3 @@ article.definition
         i.icon-tags
         - definition.tags.each do |tag|
           = render 'tags/tag', tag: tag
-
-

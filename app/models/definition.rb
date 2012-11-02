@@ -10,6 +10,7 @@ class Definition < ActiveRecord::Base
 
   scope :safe, -> { where(dangerous: false) }
   scope :with_tag, ->(tag){ where(self.has_tag(tag)) }
+  default_scope order('dangerous ASC, name ASC')
 
   def self.has_tag(tag)
     arel = self.arel_table

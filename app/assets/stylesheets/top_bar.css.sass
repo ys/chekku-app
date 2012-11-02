@@ -1,10 +1,17 @@
 header.title
-  width: 400px
+  @include outer-container
   height: 100px
-  margin: 0 auto
   margin-bottom: 50px
   h1
-    font-size: 113px
+    @include span-columns(12)
+    @media screen and (max-width: $break-large)
+      margin-top: 50px
+    @media screen and (max-width: $break-small - 1) and (min-width: $break-mobile + 1)
+      font-size: 13em
+    @media screen and (max-width: $break-mobile)
+      margin-right: 20px
+      font-size: 10em
+    font-size: 14em
     a
       color: #222
       font-family: 'Fredoka One', cursive

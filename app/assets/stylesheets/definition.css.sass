@@ -1,38 +1,36 @@
 .definition
+  &.dangerous
+    background:  tint($alertColor, 70%)
+  &.safe
   background: rgba(255,255,255, 0.5)
   margin-bottom: 10px
   height: 45px
   header
-    float: left
-    width: 30%
+    @include span-columns(4)
     padding: 0 10px
-    margin: 0
     h1
+      width: 100%
+      white-space: nowrap
+      text-overflow: ellipsis
+      overflow: hidden
+      height: 20px
       a
         color: #222
       color: #222
       float: left
-    h3
-      float: left
-      margin-right: 10px
-      font-size: 1em
-
-    &.dangerous
-      h3
-        color: $alertColor
-    &.safe
-      h3
-        color: $successColor
-
   p
+    @include span-columns(8)
+    @include omega()
+    text-overflow: ellipsis
     font-size: 12px
-    float: left
     padding: 10px
     margin-bottom: 0
     line-height: 22px
-    width: 70%
     .executable
       margin-right: 10px
     .tags
       float: right
+      a
+        color: #666
+        text-decoration: underline
 
