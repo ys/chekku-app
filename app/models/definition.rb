@@ -36,4 +36,8 @@ class Definition < ActiveRecord::Base
     self.tags = value.split(',')
     self.tags.map { |tag| Tag.find_or_create_by_name(tag) }
   end
+
+  def to_param
+    name
+  end
 end

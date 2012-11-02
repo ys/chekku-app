@@ -45,7 +45,7 @@ class DefinitionsController < ApplicationController
 
   def definition
     @definition ||= if params[:id]
-      Definition.find(params[:id])
+      Definition.find_by_name(params[:id])
       elsif params[:definition]
         Definition.new(definition_params)
       else
