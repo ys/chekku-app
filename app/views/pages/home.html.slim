@@ -1,0 +1,35 @@
+.home
+  markdown:
+    # What is chekku?
+
+    Chekku is a tool that will help you easily declare all your application software dependencies.
+    So you will be sure that every developer can easily checks and then install the needed dependencies.
+
+    It's based on a system where you first declare all the dependencies definitions for the whole system.
+    And inside your project you just have all the needed dependencies listed.
+
+    It's based on two text files. One is located in the project itself and one is in the home of the user.
+    The first declares the software dependencies and the second contains all the definitions.
+
+    # Why this application?
+
+      This web application will help you declare and manage all the definitions of your dependencies.
+      This is a community based tool to avoid repeating yourself or just find definitions made by others.
+
+      It's as easy as asking the definitions you need.
+      You can post a list of definitions in the following json format to [/definitions/export.yaml](#{export_definitions_path(format: :yaml)})
+
+          {"definitions":["mysql","redis"]}
+
+      #{link_to 'Bring me to the definitions list', definitions_path, class: 'button definitions-button'}
+
+    # How to use chekku?
+
+      Just take a look at the [github readme](https://github.com/ys/chekku/blob/master/README.md) or the [github page](http://ys.github.com/chekku)
+
+    # Who made it?
+
+      This tool and the gem associated are made and maintained by [ys](http://github.com/ys)
+
+      But you can contribute!^^
+

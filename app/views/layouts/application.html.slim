@@ -30,17 +30,18 @@ head
 body
   header.title
     h1
-      = link_to 'Chekku', root_path
+      = link_to 'Chekku', definitions_path
     nav.top-bar
       ul
-        li= link_to 'about', '#', 'data-reveal-id' => 'aboutModal'
+        li= link_to root_path do
+          i.icon-home
         li= render 'layouts/user'
   .container data-pjax-container=true
     .flash-messages
       = display_flash_messages
     = yield
-  footer
-    'Made By
-    = link_to '@yann_ck', 'http://twitter.com/yann_ck'
-  = render 'layouts/about'
+  footer.container
+    .made
+      'Made By
+      = link_to 'ys', 'http://github.com/ys'
   = render 'layouts/analytics'
