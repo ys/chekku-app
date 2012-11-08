@@ -20,6 +20,7 @@ gem 'foundation_rails_helper'
 
 gem 'draper'
 gem 'high_voltage'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

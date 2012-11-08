@@ -128,6 +128,7 @@ GEM
       bourbon (>= 2.1)
       sass (>= 3.2)
     netrc (0.7.7)
+    newrelic_rpm (3.2.0.1)
     nokogiri (1.5.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -258,6 +259,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   neat
+  newrelic_rpm
   omniauth-github
   pg
   pjax_rails
