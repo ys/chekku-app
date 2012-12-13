@@ -17,7 +17,10 @@ class DefinitionsController < ApplicationController
   def export
     respond_to do |with|
       with.html
-      with.yaml { render text: definitions.safe.map{ |definition| YamlDefinition.new(definition).output }.to_yaml }
+      with.yaml do
+        definitions_with_updated_at = [{ 'updated_at' => Date.today }] + definitions.safe.map{ |definition| YamlDefinition.new(definition).output }
+        render text: definitions_with_updated_at.to_yaml
+      end
     end
   end
 
