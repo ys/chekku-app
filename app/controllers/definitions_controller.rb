@@ -18,7 +18,9 @@ class DefinitionsController < ApplicationController
     respond_to do |with|
       with.html
       with.yaml do
-        definitions_with_updated_at = [{ 'updated_at' => Date.today }] + definitions.safe.map{ |definition| YamlDefinition.new(definition).output }
+        definitions_with_updated_at = { 'updated_at' => Date.today }.tap do |def_hash|
+          definitions.safe.each{ |definition| def_hash.merge!(YamlDefinition.new(definition).output) }
+        end
         render text: definitions_with_updated_at.to_yaml
       end
     end
